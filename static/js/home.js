@@ -1,1 +1,1 @@
-alert('Testing JS');
+alert('Welcome to the Titanic Game!')

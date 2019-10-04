@@ -1,10 +1,49 @@
 <html>
-    <header>
-        <title>Titanic App</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="Titanic Game"
+            content="Predict the Odds of Your Survival on the Titanic"
+        />
+        <link rel="stylesheet" href="../static/css/stylesheet.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <title>Titanic Game</title>
         <script type='text/javascript' src="{{url_for('static', filename='js/home.js')}}"></script>
-    </header>
-    <body>
-        <h1>Hello, World!</h1>
-        <p>Welcome to the Home Page</p>
+    </head>
+    <body class="app">
+        <div class="banner">
+            <h1 class="center-text">Titanic Game</h1>
+            <p class="center-text">
+                The Titanic tragically sunk in 1912. Despite its (very) short lived trip, the Titanic was a marvel of technology for its time.
+                <br />
+                Have you ever wondered if you would have survived, if you were on the ship? Wonder no more!
+            </p>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="gender">You are: </label>
+                <select class="form-control" id="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Your age: </label>
+                <input class="form-control" type="number" id="age" aria-describedby="age" />
+                <small id="age" class="form-text text-muted">We won't share this with anybody!</small>
+            </div>
+            <div class="form-group">
+                <label for="ticket">How much do you spend on tickets? </label>
+                <input class="form-control" type="number" id="ticket" aria-describedby="ticket" />
+            </div>
+            <div class="form-group">
+                <label for="family">How many family members would you bring on a trip? </label>
+                <input class="form-control" type="number" id="family" aria-describedby="family" />
+            </div>
+            <div type="submit" class="btn btn-block btn-primary">Find Out if you Survive!</div>
+        </form>
     </body>
 </html>

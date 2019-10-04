@@ -1,0 +1,12 @@
+.app {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    top: 5%;
+    max-width: 90%;
+    left: 5%;
+    position: absolute;
+}
+.center-text {
+    text-align: center;
+}
