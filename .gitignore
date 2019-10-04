@@ -1,4 +1,6 @@
 
 .vscode
-scripts.txt
+__pycache__
 venv
+
+scripts.txt
