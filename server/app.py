@@ -1,5 +1,5 @@
 from flask import Flask
-from home.views import home
+from api.home import home
 
 
 def create_app(config_file):
