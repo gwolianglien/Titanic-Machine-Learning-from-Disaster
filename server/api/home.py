@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from model import predict, check_number_input, convert_gender
 
 home = Blueprint('home', __name__)
 
@@ -22,17 +23,10 @@ def get_user_survivability():
     if check_number_input(family) is False:
         family = 2  # same condition as age
     sex = convert_gender(sex)
-    return [age, family, fare, sex]
 
-
-def check_number_input(input):
-    if type(input) == int or type(input == float):
-        return True
-    return False
-
-
-def convert_gender(gender):
-    if gender == 'Female':
-        return 1
+    user_input = [age, family, fare, sex]
+    res = predict(user_input)
+    if res == 0:
+        return "Died"
     else:
-        return 0
+        return "Survived"
