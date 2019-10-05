@@ -1,0 +1,14 @@
+.App {
+  height: auto;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+.App-container {
+  width: 100%;
+}
+
+.center-text {
+  text-align: center;
+}
