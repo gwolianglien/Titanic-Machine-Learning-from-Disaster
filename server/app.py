@@ -1,19 +1,15 @@
 from flask import Flask
-# from views.home import home as home_view
-# from api.titanic import titanic
-from api.test import test
+from api.titanic import titanic
 
 def create_app(config_file):
     # Create Flask app object
     app = Flask(__name__)  
 
-    # Sort of like a default JSON file to store constants and keys
+    # Store config file
     app.config.from_pyfile(config_file)
 
-    # Very much like ExpressJS where you import and require a route
-    # app.register_blueprint(home_view)
-    # app.register_blueprint(titanic, url_prefix='/predict')
-    app.register_blueprint(test, url_prefix='/test/')
+    # Import routes
+    app.register_blueprint(titanic, url_prefix='/titanic')
     return app
 
 
