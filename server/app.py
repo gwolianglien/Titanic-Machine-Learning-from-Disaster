@@ -1,6 +1,7 @@
 from flask import Flask
-from api.home import home
-
+# from views.home import home as home_view
+# from api.titanic import titanic
+from api.test import test
 
 def create_app(config_file):
     # Create Flask app object
@@ -10,7 +11,9 @@ def create_app(config_file):
     app.config.from_pyfile(config_file)
 
     # Very much like ExpressJS where you import and require a route
-    app.register_blueprint(home)
+    # app.register_blueprint(home_view)
+    # app.register_blueprint(titanic, url_prefix='/predict')
+    app.register_blueprint(test, url_prefix='/test/')
     return app
 
 
