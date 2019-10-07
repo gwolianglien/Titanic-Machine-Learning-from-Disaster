@@ -3,9 +3,10 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 export const getResults = async (userObj) => {
+    const header = { header: { 'Content-Type': 'application/json' }}
     const body = JSON.stringify(userObj);
     try {
-        let res = await axios.post('/titanic', body, { withCredentials: false });
+        let res = await axios.post('/titanic', body, header, { withCredentials: false });
         return res;
     } catch(err) {
         console.error(err.message);
@@ -29,7 +30,7 @@ const Form = () => {
         sex: "Male",
         age: "",
         fare: "",
-        family: ""
+        family: "",
     });
 
     const handleChange = event => changeState({

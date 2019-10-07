@@ -1,5 +1,6 @@
 from flask import Flask
 from api.titanic import titanic
+from api.test import test
 
 def create_app(config_file):
     # Create Flask app object
@@ -10,6 +11,7 @@ def create_app(config_file):
 
     # Import routes
     app.register_blueprint(titanic, url_prefix='/titanic')
+    app.register_blueprint(test, url_prefix='/test')
     return app
 
 

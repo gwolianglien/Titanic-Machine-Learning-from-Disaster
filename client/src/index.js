@@ -4,8 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './index.css';
 import './App.css';
 
-import Home from './components/Home';
-import Result from './components/Result';
+import Home from './Home';
+import Result from './Result';
 
 const Router = () => (
     <Switch>
