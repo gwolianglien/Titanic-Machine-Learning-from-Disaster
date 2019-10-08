@@ -1,6 +1,7 @@
+pandas
+numpy
 Flask
 Flask-Testing
+Flask-Cors
 nose
-numpy
-pandas
 sklearn

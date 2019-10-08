@@ -16,16 +16,17 @@ def predict_user_results():
     :rtype: int
     """
 
-    content = request.json
-    age = content['age']
-    family = content['family']
-    fare = content['fare']
-    sex = content['sex']
+    content = request.get_json()
+    
+    age = content.get("age")
+    family = content.get("family")
+    fare = content.get("fare")
+    sex = content.get("sex")
 
     age = set_number_input(age, 'Age')
     family = set_number_input(family, 'Family')
     fare = set_number_input(fare, 'Fare')
-    sex = convert_gender(sex)    
+    sex = get_gender(sex)
     user_input = [age, family, fare, sex]
 
     result = get_prediction(user_input)
@@ -101,12 +102,15 @@ def get_average(feature):
         df = np.array(list(df[feature]))
         return df.mean()
     except:
-        return 0  # Temporary - need better method of handling this error
+        raise Exception('Error retrieving Averages')  # Temporary - need better method of handling this error
 
 
-def convert_gender(sex):
+def get_gender(sex):
     """
     :type sex: str
     :rtype: int
     """
-    return 1 if sex.lower() == 'female' else 0
+    try:
+        return 1 if sex.lower() == 'female' else 0
+    except:
+        return 0  # Temporary - need better method of handling this error

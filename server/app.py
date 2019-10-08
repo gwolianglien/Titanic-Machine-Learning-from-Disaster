@@ -1,10 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 from api.titanic import titanic
 from api.test import test
 
 def create_app(config_file):
     # Create Flask app object
     app = Flask(__name__)  
+    CORS(app)
 
     # Store config file
     app.config.from_pyfile(config_file)
