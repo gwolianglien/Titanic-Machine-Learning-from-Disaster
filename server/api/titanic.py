@@ -1,10 +1,9 @@
+import os
 from flask import Blueprint, request, Response
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
-
-
-from actions.model import get_model, set_number_input, get_gender, get_result_string
+from api.actions.model import get_model, set_number_input, get_gender, get_result_string
 
 titanic = Blueprint('titanic', __name__)
 
@@ -32,7 +31,9 @@ def predict_user_results():
     sex = get_gender(sex)
     user_input = [age, family, fare, sex]
 
-    model = get_model()  # load model with pickle
+    filename = 'finalized_model.sav'
+    path = os.path.join(os.getcwd(), 'api', 'models', filename)
+    model = get_model(path)  # load model with pickle
 
     try:
         user = np.array(user_input).reshape(1, -1)

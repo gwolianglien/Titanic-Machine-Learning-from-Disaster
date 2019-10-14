@@ -1,21 +1,21 @@
+import os
 import pickle
 import pandas as pd
 import numpy as np
 
 
-def get_model(filename='finalized_model.sav'):
+def get_model(filepath):
     try:
-        path = '../../models/'
-        loaded_model = pickle.load(open(path+filename, 'wb'))
+        loaded_model = pickle.load(open(filepath, 'rb'))
         return loaded_model
-    except:
+    except FileNotFoundError:
         raise Exception('Error loading saved model')
 
 
 def get_result_string(string):
     if string == "0":
         return "You would not have survived :("
-    return "You would have survived!"
+    return "You would have survived! :)"
 
 
 def set_number_input(num, feature):
@@ -26,7 +26,7 @@ def set_number_input(num, feature):
     try:
         temp = int(num)
         return temp
-    except:
+    except AssertionError:
         return get_average(feature)
 
 
@@ -39,7 +39,7 @@ def get_average(feature):
         df = pd.read_csv('titanic_model_data.csv', keep_default_na=False)
         df = np.array(list(df[feature]))
         return df.mean()
-    except:
+    except AssertionError:
         raise Exception('Error retrieving Averages')  # Temporary - need better method of handling this error
 
 
@@ -50,7 +50,7 @@ def get_gender(sex):
     """
     try:
         return 1 if sex.lower() == 'female' else 0
-    except:
+    except AssertionError:
         return 0  # Temporary - need better method of handling this error
 
 

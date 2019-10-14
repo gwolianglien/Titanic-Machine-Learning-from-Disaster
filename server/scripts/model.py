@@ -1,3 +1,4 @@
+import os
 import pickle
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
@@ -8,7 +9,12 @@ def main():
         df = pd.read_csv('../data/titanic_model_data.csv', keep_default_na=False)
         linear_model = train(df)
         filename = 'finalized_model.sav'
-        pickle.dump(linear_model, open(filename, 'wb'))
+
+        path = '../api/models/'
+        if not os.path.exists(path):
+            os.makedirs(path)
+
+        pickle.dump(linear_model, open(os.path.join(path, filename), 'wb'))
     except:
         raise Exception('Error training model')
 
